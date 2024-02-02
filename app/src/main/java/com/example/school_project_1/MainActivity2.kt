@@ -15,7 +15,6 @@ class MainActivity2 : AppCompatActivity() {
         fun moveToAnotherPage(){
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         buttonTwo.setOnClickListener {

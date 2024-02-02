@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         fun moveToAnotherPage(){
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
-            finish()
         }
 
         button.setOnClickListener {

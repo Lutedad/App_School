@@ -20,13 +20,11 @@ class LoginActivity : AppCompatActivity() {
         fun moveToMainPage(){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         fun moveToSignUpPage(){
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         loginButton.setOnClickListener {

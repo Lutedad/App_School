@@ -2,13 +2,11 @@ package com.example.school_project_1
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import org.w3c.dom.Text
 import java.util.regex.Pattern
 
 class SignUpActivity : AppCompatActivity() {
@@ -23,10 +21,9 @@ class SignUpActivity : AppCompatActivity() {
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
         val signUpBtn = findViewById<Button>(R.id.btn_register)
 
-        fun moveToAnotherPage(){
+        fun moveToMainPage(){
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         fun signUpProcess(){
@@ -35,7 +32,7 @@ class SignUpActivity : AppCompatActivity() {
                 if (password.text.toString() == passwordTwo.text.toString()){
                     //Valid Email & Matching Passwords
                     message.text = "Well Done!"
-                    moveToAnotherPage()
+                    moveToMainPage()
                 } else {
                     message.text = "Password mismatching."
                 }
@@ -49,5 +46,7 @@ class SignUpActivity : AppCompatActivity() {
             signUpProcess()
         }
 
+
     }
+
 }
