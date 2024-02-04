@@ -7,52 +7,77 @@
     android:background="@color/grey"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/edit_id"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
-        android:ems="10"
-        android:hint="Id"
-        android:textColorHint="@color/white"
-        android:inputType="textPersonName"
+        android:orientation="vertical"
+        android:background="@drawable/round_light_brown_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        >
 
-    <EditText
-        android:id="@+id/edit_pw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Password"
-        android:textColorHint="@color/white"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_id" />
+        <EditText
+            android:autofillHints="emailAddress"
+            android:id="@+id/edit_id"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:textSize="20sp"
+            android:ems="10"
+            android:fontFamily="@font/medium_font"
+            android:hint="@string/email"
+            android:textColorHint="@color/grey"
+            android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="24dp"
-        android:text="Sign In"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pw" />
+        <EditText
+            android:autofillHints="password"
+            android:id="@+id/edit_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:textSize="20sp"
+            android:ems="10"
+            android:fontFamily="@font/medium_font"
+            android:hint="@string/password"
+            android:textColorHint="@color/grey"
+            android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="100dp"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pw" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_login"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:background="@drawable/round_white_btn"
+                android:fontFamily="@font/medium_font"
+                android:text="@string/sign_in"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@null"
+                android:padding="10dp"/>
+
+            <Button
+                android:id="@+id/btn_register"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/round_white_btn"
+                android:fontFamily="@font/medium_font"
+                android:text="@string/sign_up"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                android:textStyle="bold|italic"
+                app:backgroundTint="@null"
+                android:padding="10dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,15 @@
 package com.example.school_project_1
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.school_project_1.databinding.ActivityLoginBinding
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -26,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
             }
             val userPW = if (binding.editPw.text.toString().isNotEmpty()) {
                 binding.editPw.text.toString().trim()
-            }else{
+            } else{
                 "Empty"
             }
 
@@ -65,5 +67,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+    private fun signOut() {
+        mAuth.signOut()
+    }
 
+    private fun revokeAccess(){
+        mAuth.currentUser?.delete()
+    }
 }

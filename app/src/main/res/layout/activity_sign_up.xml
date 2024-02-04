@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/grey"
     app:passwordToggleEnabled="true"
     tools:context=".MainActivity">
 
@@ -12,72 +12,86 @@
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
         android:ems="10"
-        android:text="Welcome!"
+        android:fontFamily="@font/medium_font"
+        android:text="@string/welcome"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="@color/light_brown"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edit_name"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
+        android:background="@drawable/round_light_brown_btn"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/message" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/edit_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_name" />
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:ems="10"
+            android:fontFamily="@font/medium_font"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/edit_pw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_id" />
+        <EditText
+            android:id="@+id/edit_id"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:ems="10"
+            android:fontFamily="@font/medium_font"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/edit_pw_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Password Confirm"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pw" />
+        <EditText
+            android:id="@+id/edit_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:ems="10"
+            android:fontFamily="@font/medium_font"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pw_2" />
+        <EditText
+            android:id="@+id/edit_pw_2"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:ems="10"
+            android:fontFamily="@font/medium_font"
+            android:hint="Password Confirm"
+            android:inputType="textPassword"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_white_btn"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/sign_up"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:textStyle="bold|italic"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
