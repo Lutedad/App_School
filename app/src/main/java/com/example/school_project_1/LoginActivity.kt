@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.school_project_1.databinding.ActivityLoginBinding
 import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 
 
@@ -18,51 +17,46 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
+        val user = Firebase.auth.currentUser
+
+        if (user != null) {
+            // User is signed in
+            Utils.moveToUserPage(this)
+        } else {
+            // No user is signed in
+            setContentView(binding.root)
+        }
 
         binding.btnLogin.setOnClickListener {
-            val userID = if (binding.editId.text.toString().isNotEmpty()) {
+            val userID = if (binding.editId.text.isNotEmpty()) {
                 binding.editId.text.toString().trim()
-            } else{
-                "Empty"
+            } else {
+                Toast.makeText(this, "Please enter your ID.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
-            val userPW = if (binding.editPw.text.toString().isNotEmpty()) {
+
+            val userPW = if (binding.editPw.text.isNotEmpty()) {
                 binding.editPw.text.toString().trim()
-            } else{
-                "Empty"
+            } else {
+                Toast.makeText(this, "Please enter your password.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
 
-            if (userID == "Empty" || userPW == "Empty") {
-                Toast.makeText(this, "Please type your proper ID and Password.", Toast.LENGTH_SHORT).show()
-            }else{
-                login(userID,userPW)
-                moveToMainPage()
-            }
-
+            login(userID, userPW)
         }
 
         binding.btnRegister.setOnClickListener {
-            moveToSignUpPage()
+            Utils.moveToSignUpPage(this)
         }
-    }
-    private fun moveToMainPage(){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun moveToSignUpPage(){
-        val intent = Intent(this, SignUpActivity::class.java)
-        startActivity(intent)
     }
 
     private fun login(email : String, pwd:String){
         mAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener { task ->
             if (task.isSuccessful){
-                Toast.makeText(this, "Well done BOY", Toast.LENGTH_SHORT).show()
-                moveToMainPage()
-                finish()
+                Toast.makeText(this, "Successfully logged in", Toast.LENGTH_SHORT).show()
+                Utils.moveToUserPage(this)
             }else{
-                Toast.makeText(this, "EW...", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to log in", Toast.LENGTH_SHORT).show()
                 Log.d("Login","Error: ${task.exception}")
             }
         }
