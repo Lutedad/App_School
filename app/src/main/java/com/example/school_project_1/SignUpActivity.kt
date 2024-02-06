@@ -22,26 +22,21 @@ import java.util.regex.Pattern
 
 class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var mAuth: FirebaseAuth
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var mDbRef: DatabaseReference
 
+    private val mAuth = Utils.mAuth
+    private val mDbRef = Utils.mDbRef
+    private val user = Utils.user
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
 
-        val user = Firebase.auth.currentUser
-
-        if (user != null) {
-            // User is signed in
+        if (Utils.signInCheck(user)){
+            //user is signed in
             Utils.moveToUserPage(this)
-        } else {
-            // No user is signed in
+        }else {
             setContentView(binding.root)
         }
-
-        mAuth = Firebase.auth // reset auth
-        mDbRef = Firebase.database.reference // reset Db
 
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
 
@@ -93,7 +88,7 @@ class SignUpActivity : AppCompatActivity() {
     }
     private fun sendVerificationEmail(){
         try {
-            mAuth.currentUser!!.sendEmailVerification()
+            user!!.sendEmailVerification()
             Toast.makeText(this, "Verification email sent.", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             Toast.makeText(this, "Failed to Send a Verification Email", Toast.LENGTH_SHORT).show()
@@ -106,7 +101,7 @@ class SignUpActivity : AppCompatActivity() {
             //photoUri = Uri.parse("https://example.com/jane-q-user/profile.jpg")
         }
 
-        mAuth.currentUser!!.updateProfile(profileUpdates)
+        user!!.updateProfile(profileUpdates)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "User profile updated.")

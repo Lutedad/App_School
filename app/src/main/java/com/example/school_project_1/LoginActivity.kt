@@ -1,6 +1,5 @@
 package com.example.school_project_1
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
