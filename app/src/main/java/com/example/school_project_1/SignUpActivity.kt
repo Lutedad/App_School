@@ -1,9 +1,6 @@
 package com.example.school_project_1
 
-import android.content.ContentValues.TAG
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.TextView
 import android.widget.Toast
@@ -12,7 +9,6 @@ import com.example.school_project_1.databinding.ActivitySignUpBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
@@ -23,15 +19,16 @@ import java.util.regex.Pattern
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
-
-    private val mAuth = Utils.mAuth
-    private val mDbRef = Utils.mDbRef
-    private val user = Utils.user
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDbRef: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
 
-        if (Utils.signInCheck(user)){
+        mAuth = Firebase.auth
+        mDbRef = Firebase.database.reference
+
+        if (Utils.signInCheck(mAuth.currentUser)){
             //user is signed in
             Utils.moveToUserPage(this)
         }else {
@@ -79,16 +76,13 @@ class SignUpActivity : AppCompatActivity() {
     }
     private fun userSuccessfullyCreated(name: String, email: String){
         updateUser(name)
-
-        sendVerificationEmail()
-
         addUserToDB(name, email, mAuth.currentUser?.uid!!)
-
+        sendVerificationEmail()
         Utils.moveToMainPage(this)
     }
     private fun sendVerificationEmail(){
         try {
-            user!!.sendEmailVerification()
+            mAuth.currentUser!!.sendEmailVerification()
             Toast.makeText(this, "Verification email sent.", Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             Toast.makeText(this, "Failed to Send a Verification Email", Toast.LENGTH_SHORT).show()
@@ -101,10 +95,9 @@ class SignUpActivity : AppCompatActivity() {
             //photoUri = Uri.parse("https://example.com/jane-q-user/profile.jpg")
         }
 
-        user!!.updateProfile(profileUpdates)
+        mAuth.currentUser!!.updateProfile(profileUpdates)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.d(TAG, "User profile updated.")
                 }
             }
     }

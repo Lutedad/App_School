@@ -2,28 +2,31 @@ package com.example.school_project_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.school_project_1.databinding.ActivityDiaryBinding
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
 
 class DiaryActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDiaryBinding
-    private val mAuth = Utils.mAuth
-    private val mDbRef = Utils.mDbRef
-    private val user = Utils.user
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDbRef: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDiaryBinding.inflate(layoutInflater)
 
-        if (Utils.signInCheck(user)) {
+        mAuth = Firebase.auth
+        mDbRef = Firebase.database.reference
+
+        if (Utils.signInCheck(mAuth.currentUser)) {
             setContentView(binding.root)
         } else{
             Utils.moveToLogInPage(this)
         }
 
-        user?.let {
+        mAuth.currentUser?.let {
             // Name
             val name = it.displayName
         }

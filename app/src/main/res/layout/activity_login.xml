@@ -29,7 +29,8 @@
             android:fontFamily="@font/medium_font"
             android:hint="@string/email"
             android:textColorHint="@color/grey"
-            android:inputType="textPersonName" />
+            android:textColor="@color/grey"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:autofillHints="password"
@@ -41,6 +42,7 @@
             android:fontFamily="@font/medium_font"
             android:hint="@string/password"
             android:textColorHint="@color/grey"
+            android:textColor="@color/grey"
             android:inputType="textPassword" />
 
         <LinearLayout

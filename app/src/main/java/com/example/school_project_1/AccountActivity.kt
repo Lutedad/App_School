@@ -5,14 +5,23 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.school_project_1.databinding.ActivityAccountBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.database
+
 class AccountActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAccountBinding
-    private val mAuth = Utils.mAuth
-    private val mDbRef = Utils.mDbRef
-    private val user = Utils.user
+    private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDbRef: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountBinding.inflate(layoutInflater)
+
+        mAuth = Firebase.auth
+        mDbRef = Firebase.database.reference
+        val user = mAuth.currentUser
 
         if (Utils.signInCheck(user)){
             setContentView(binding.root)
