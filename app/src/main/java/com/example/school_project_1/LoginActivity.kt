@@ -47,6 +47,10 @@ class LoginActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             Utils.moveToSignUpPage(this)
         }
+
+        binding.backBtn.setOnClickListener {
+            Utils.simulateBackspace()
+        }
     }
 
     private fun login(email : String, pwd:String){

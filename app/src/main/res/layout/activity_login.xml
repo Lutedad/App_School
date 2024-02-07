@@ -4,14 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
-    tools:context=".MainActivity">
+    android:background="@color/light_white"
+    tools:context=".MainActivity"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/arrow_left"
+            android:id="@+id/back_btn"
+            android:contentDescription="TODO" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/round_light_brown_btn"
+        android:background="@drawable/brown_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +44,8 @@
             android:ems="10"
             android:fontFamily="@font/medium_font"
             android:hint="@string/email"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/dark_grey"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -41,8 +57,8 @@
             android:ems="10"
             android:fontFamily="@font/medium_font"
             android:hint="@string/password"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/dark_grey"
             android:inputType="textPassword" />
 
         <LinearLayout
@@ -55,10 +71,10 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="50sp"
-                android:background="@drawable/round_white_btn"
+                android:background="@drawable/white_btn"
                 android:fontFamily="@font/medium_font"
                 android:text="@string/sign_in"
-                android:textColor="@color/grey"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp"
                 android:textStyle="bold|italic"
                 app:backgroundTint="@null"
@@ -70,10 +86,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50sp"
                 android:layout_marginStart="30dp"
-                android:background="@drawable/round_white_btn"
+                android:background="@drawable/white_btn"
                 android:fontFamily="@font/medium_font"
                 android:text="@string/sign_up"
-                android:textColor="@color/grey"
+                android:textColor="@color/dark_grey"
                 android:textSize="16sp"
                 android:textStyle="bold|italic"
                 app:backgroundTint="@null"

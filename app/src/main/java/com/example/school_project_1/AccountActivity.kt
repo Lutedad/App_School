@@ -35,7 +35,7 @@ class AccountActivity : AppCompatActivity() {
             // Name
             val name = it.displayName
             Log.d(name,"test")
-            binding.userProfileLabel.text = name
+            binding.title.text = name
         }
 
         binding.slidersBtn.setOnClickListener {

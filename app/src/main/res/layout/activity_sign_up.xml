@@ -4,31 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="@color/light_white"
     app:passwordToggleEnabled="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="10dp">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:fontFamily="@font/medium_font"
-        android:text="@string/welcome"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/light_brown"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/arrow_left"
+            android:id="@+id/back_btn"
+            android:contentDescription="TODO" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_light_brown_btn"
+        android:background="@drawable/brown_btn"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,8 +44,8 @@
             android:fontFamily="@font/medium_font"
             android:hint="@string/username"
             android:inputType="textPersonName"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/dark_grey"
             android:textSize="20sp" />
 
         <EditText
@@ -56,8 +56,8 @@
             android:fontFamily="@font/medium_font"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/dark_grey"
             android:textSize="20sp" />
 
         <EditText
@@ -68,8 +68,8 @@
             android:fontFamily="@font/medium_font"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/dark_grey"
             android:textSize="20sp" />
 
         <EditText
@@ -80,18 +80,18 @@
             android:fontFamily="@font/medium_font"
             android:hint="Password Confirm"
             android:inputType="textPassword"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/dark_grey"
+            android:textColor="@color/dark_grey"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_white_btn"
+            android:background="@drawable/white_btn"
             android:fontFamily="@font/medium_font"
             android:text="@string/sign_up"
-            android:textColor="@color/grey"
+            android:textColor="@color/dark_grey"
             android:textSize="16sp"
             android:textStyle="bold|italic"
             app:backgroundTint="@null" />

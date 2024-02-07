@@ -42,19 +42,18 @@ class SignUpActivity : AppCompatActivity() {
             val pwd2 = binding.editPw2.text.toString()
             val email = binding.editId.text.toString()
             val name = binding.editName.text.toString()
-            val message: TextView = binding.message
-            signUpProcess(email, pwd, pwd2, name, pattern, message)
+            signUpProcess(email, pwd, pwd2, name, pattern)
         }
     }
-    private fun signUpProcess(email: String,pwd : String, pwd2:String, name: String, pattern: Pattern, message: TextView) {
+    private fun signUpProcess(email: String,pwd : String, pwd2:String, name: String, pattern: Pattern) {
 
         if (!pattern.matcher(email).matches()) {
-            message.text = "Invalid Email Address"
+            Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_SHORT).show()
             return
         }
 
         if (pwd != pwd2 || pwd.length < 6){
-            message.text = "Invalid Password. It has to be at least 6 digits."
+            Toast.makeText(this, "Invalid Password Format", Toast.LENGTH_SHORT).show()
             return
         }
 

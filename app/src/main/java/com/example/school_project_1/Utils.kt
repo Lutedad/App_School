@@ -2,6 +2,7 @@ package com.example.school_project_1
 
 import android.content.Context
 import android.content.Intent
+import android.view.KeyEvent
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -38,6 +39,9 @@ class Utils {
         fun signInCheck(user: FirebaseUser?): Boolean {
             //if user is signed in return True
             return user != null
+        }
+        fun simulateBackspace() {
+            KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
         }
     }
 }
