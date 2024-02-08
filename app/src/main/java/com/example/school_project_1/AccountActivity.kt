@@ -3,7 +3,6 @@ package com.example.school_project_1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.example.school_project_1.databinding.ActivityAccountBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +27,7 @@ class AccountActivity : AppCompatActivity() {
         }else {
             // No user is signed in
             Utils.moveToLogInPage(this)
+            finish()
             return
         }
 
@@ -44,9 +44,6 @@ class AccountActivity : AppCompatActivity() {
         }
 
         binding.backBtn.setOnClickListener {
-            user?.let { it1 -> deleteUserDB(it1.uid) }
-            user?.delete()
-            Toast.makeText(this, "Successfully deleted your account", Toast.LENGTH_SHORT).show()
             Utils.moveToMainPage(this)
         }
     }
@@ -54,3 +51,8 @@ class AccountActivity : AppCompatActivity() {
         mDbRef.child("user").child(uId).removeValue()
     }
 }
+
+//            user?.let { it1 -> deleteUserDB(it1.uid) }
+//            user?.delete()
+//            Toast.makeText(this, "Successfully deleted your account", Toast.LENGTH_SHORT).show()
+//            Utils.moveToMainPage(this)

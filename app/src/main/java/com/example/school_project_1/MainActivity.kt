@@ -2,10 +2,7 @@ package com.example.school_project_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
 import com.example.school_project_1.databinding.ActivityMainBinding
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,21 +11,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val accountButton = binding.userAccount
-        val backButton = binding.backBtn
-        val snsButton = binding.twitterBtn
+        binding.userAccount.setOnClickListener { Utils.moveToUserPage(this) }
 
-        accountButton.setOnClickListener {
-            Utils.moveToUserPage(this)
-        }
+        binding.backBtn.setOnClickListener { finish() }
 
-        backButton.setOnClickListener {
-            simulateBackspace()
-        }
+        binding.diaryBtn.setOnClickListener { Utils.moveToDiaryPage(this) }
 
     }
-    private fun simulateBackspace() {
-        KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL)
-    }
-
 }

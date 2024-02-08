@@ -3,7 +3,7 @@
     <style name="Base.Theme.School_Project_1" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:windowLightStatusBar" >true</item>
-        <item name="android:navigationBarColor">@color/light_white</item>
+        <item name="android:navigationBarColor">@color/dark_white</item>
         <item name="colorPrimaryDark">@color/light_white</item>
         <item name="windowNoTitle">true</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->

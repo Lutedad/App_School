@@ -44,6 +44,8 @@ class SignUpActivity : AppCompatActivity() {
             val name = binding.editName.text.toString()
             signUpProcess(email, pwd, pwd2, name, pattern)
         }
+
+        binding.backBtn.setOnClickListener { Utils.moveToLogInPage(this) }
     }
     private fun signUpProcess(email: String,pwd : String, pwd2:String, name: String, pattern: Pattern) {
 
@@ -74,35 +76,18 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
     private fun userSuccessfullyCreated(name: String, email: String){
-        updateUser(name)
+        Utils.updateUser(name)
         addUserToDB(name, email, mAuth.currentUser?.uid!!)
-        sendVerificationEmail()
+
+        if (Utils.sendVerificationEmail(this)){
+            Toast.makeText(this, "Email Verification is sent.", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(this, "Failed to send an email verification.", Toast.LENGTH_SHORT).show()
+        }
+
         Utils.moveToMainPage(this)
     }
-    private fun sendVerificationEmail(){
-        try {
-            mAuth.currentUser!!.sendEmailVerification()
-            Toast.makeText(this, "Verification email sent.", Toast.LENGTH_SHORT).show()
-        } catch (e: Exception) {
-            Toast.makeText(this, "Failed to Send a Verification Email", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun updateUser(name:String){
-        val profileUpdates = userProfileChangeRequest {
-            displayName = name
-            //photoUri = Uri.parse("https://example.com/jane-q-user/profile.jpg")
-        }
-
-        mAuth.currentUser!!.updateProfile(profileUpdates)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                }
-            }
-    }
-
     private fun addUserToDB(name:String, email:String, uId: String){
         mDbRef.child("user").child(uId).setValue(User(name, email, uId))
     }
-
 }

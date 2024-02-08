@@ -44,13 +44,9 @@ class LoginActivity : AppCompatActivity() {
             login(userID, userPW)
         }
 
-        binding.btnRegister.setOnClickListener {
-            Utils.moveToSignUpPage(this)
-        }
+        binding.btnRegister.setOnClickListener { Utils.moveToSignUpPage(this) }
 
-        binding.backBtn.setOnClickListener {
-            Utils.simulateBackspace()
-        }
+        binding.backBtn.setOnClickListener { Utils.moveToMainPage(this) }
     }
 
     private fun login(email : String, pwd:String){
@@ -64,11 +60,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    private fun signOut() {
-        mAuth.signOut()
-    }
-
-    private fun revokeAccess(){
-        mAuth.currentUser?.delete()
-    }
+    private fun signOut() { mAuth.signOut() }
+    private fun revokeAccess(){ mAuth.currentUser?.delete() }
 }
