@@ -47,21 +47,47 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-        <LinearLayout
+
+        <EditText
+            android:id="@+id/diaryInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/scrollLinear"
-            android:orientation="vertical"
-            android:padding="10dp">
-        </LinearLayout>
-
-
-
+            android:hint="@string/username"
+            android:inputType="text"
+            android:autofillHints="Test Hint" />
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/save_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="60dp"
+            android:background="@drawable/book"
+            android:contentDescription="Go to User Diary Page" />
+
+        <ImageButton
+            android:id="@+id/date_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/calendar"
+            android:contentDescription="Go to User Calendar Page" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
